@@ -30,24 +30,24 @@ urls = [
     'https://groww.in/us-stocks/dis'
     ]
 
-all=[]
+all= []
 
 for url in urls:
     page = requests.get(url,headers=headers)
 
     try:
         soup = BeautifulSoup(page.text, 'html.parser')
-        company = soup.find('h1', {'class': 'usph14Head displaySmall'}).text
+        company = soup.find('h1', {'class': 'usph14Head displaySmall'}).text # type: ignore
         price = soup.find('span', {'class': 'uht141Pri contentPrimary displayBase'})       
-        change = soup.find('div', {'class': 'uht141Day bodyBaseHeavy contentNegative'}).text
+        change = soup.find('div', {'class': 'uht141Day bodyBaseHeavy contentNegative'}).text # type: ignore
         volume_tag=soup.find('table', {'class': 'tb10Table borderPrimary width100 usp100NoBorder usp100Table'})
         if volume_tag:
-            rows = volume_tag.find_all('tr')  # Find all rows
+            rows = volume_tag.find_all('tr')  # type: ignore # Find all rows
             if len(rows) > 1:  # Check if second row exists
                 cells = rows[1].find_all('td')  # Find all cells in the second row
                 if len(cells) > 2:  # Check if the third cell exists
                     volume = cells[2].text.strip() 
-        x=[company,price,change,volume]
+        x=[company,price,change,volume] # type: ignore
         all.append(x)
         
     except AttributeError:
