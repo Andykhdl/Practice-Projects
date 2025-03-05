@@ -17,7 +17,7 @@ def encrypt_folder(folder_path, password):
     return encrypted_zip_path
 
 # Example usage
-folder_to_encrypt = "Private"
-password = "@rAvKhDl2014"
+folder_to_encrypt = ""
+password = ""
 encrypted_folder = encrypt_folder(folder_to_encrypt, password)
 print(f"Folder encrypted and saved as: {encrypted_folder}")
