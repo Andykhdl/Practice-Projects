@@ -13,7 +13,7 @@ def encrypt_folder(folder_path, password):
 
     # Encrypt the ZIP file
     encrypted_zip_path = zip_path + ".aes"
-    pyAesCrypt.encryptFile(zip_path, encrypted_zip_path, password)
+    pyAesCrypt.encryptFile(zip_path, encrypted_zip_path, password, 64*1024*1024)
     return encrypted_zip_path
 
 # Example usage
